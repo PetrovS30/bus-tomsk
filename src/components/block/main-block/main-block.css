@@ -1,0 +1,26 @@
+.main-block__block{
+    width: 100%;
+    height: 700px;
+    background-color: #fff;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+}
+
+.main-block__text{
+    display: flex;
+    max-width: 740px;
+    text-align: center;
+    font-size: 50px;
+    color: black;
+}
+
+.main-block__bus1{
+    position: absolute;
+    left: 0;
+}
+
+.main-block__bus2{
+    position: absolute;
+    right: 0;
+}
