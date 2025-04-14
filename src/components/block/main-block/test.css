@@ -1,0 +1,48 @@
+.main-block__block {
+    position: relative; /* Создаем контекст для позиционирования */
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Центрируем содержимое по горизонтали */
+    min-height: 100vh;
+    overflow: hidden; /* Скрываем автобусы за пределами блока */
+  }
+  
+  .main-block__text {
+    position: relative; /* Поднимаем текст над автобусами */
+    z-index: 10; /* Убедитесь, что текст выше автобусов */
+    text-align: center;
+    max-width: 80%; /* Ограничиваем ширину текста */
+    padding: 20px;
+    margin: 0 auto; /* Центрируем */
+  }
+  
+  .main-block__bus1,
+  .main-block__bus2 {
+    position: absolute; /* Выводим автобусы из потока */
+    z-index: 1; /* Размещаем под текстом */
+    width: 250px;
+    height: auto;
+  }
+  
+  .main-block__bus1 {
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  
+  .main-block__bus2 {
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  
+  
+  @keyframes driveInFromLeft {
+    from { transform: translate(-100%, -50%); }
+    to { transform: translate(20px, -50%); } /* Останавливается слева от текста */
+  }
+  
+  @keyframes driveInFromRight {
+    from { transform: translate(100%, -50%); }
+    to { transform: translate(-20px, -50%); } /* Останавливается справа от текста */
+  }
