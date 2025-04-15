@@ -1,56 +1,60 @@
 import './results-block.css';
-import {
-    LineChart,
-    Line,
-    XAxis,
-    YAxis,
-    CartesianGrid,
-    Tooltip,
-    Legend,
-    ResponsiveContainer,
-} from 'recharts';
-
+import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, Label} from 'recharts';
 
 const data = [
-    { name: '1', uv: 4000, pv: 2400, amt: 2400 },
-    { name: '2', uv: 3000, pv: 1398, amt: 2210 },
-    { name: '3', uv: 2000, pv: 9800, amt: 2290 },
-    { name: '4', uv: 2780, pv: 3908, amt: 2000 },
-    { name: '5', uv: 1890, pv: 4800, amt: 2181 },
-];
+    { name: 1, "всего оценок": 20 },
+    { name: 2, "всего оценок": 22 },
+    { name: 3, "всего оценок": 90 },
+    { name: 4, "всего оценок": 50 },
+    { name: 5, "всего оценок": 144 }
+  ];
 
-const MyLineChart = () => {
+  const CustomBar = ({ x, y, width, height, fill }) => {
+    const strokeColor = '#3f5f95'; // Цвет обводки
+    const strokeWidth = 2; // Ширина обводки
     return (
-        <ResponsiveContainer width={717} height={477}>
-            <LineChart data={data}>
-                <CartesianGrid strokeDasharray="3 3" />
-                <XAxis dataKey="name" />
-                <YAxis />
-                <Tooltip />
-                <Legend />
-                <Line type="monotone" dataKey="pv" stroke="#8884d8" activeDot={{ r: 8 }} />
-                <Line type="monotone" dataKey="uv" stroke="#82ca9d" />
-            </LineChart>
-        </ResponsiveContainer>
-    );
-};
+      <rect
+      stroke={strokeColor} // Цвет обводки
+      strokeWidth={strokeWidth} // Ширина
+          x={x + 5} // Устанавливаем отступ слева
+          y={y}
+          width={width - 10} // Уменьшаем ширину для создания отступа справа
+          height={height}
+          fill={fill}
+      />
+  );
+  };
 
-
+  const MyBarChart = () => {
+    
+    const customTicks = [0, 50, 100, 150,  200];
+    return (
+    <div style={{ backgroundColor: '#fff', margin:" 0 auto",marginTop: "74px", width: "500px", height: "300px"}}>
+        <BarChart barCategoryGap={0} margin={{ top: 20, right: 30, left: 20, bottom: 5 }} width={500} height={300} data={data}  >
+        <CartesianGrid strokeDasharray="3 3" fill="" stroke="none" />{/*фон */}
+        <XAxis dataKey="name" stroke="#000" strokeWidth={1}>
+            <Label offset={0} position="insideBottom" />
+        </XAxis>
+        <XAxis stroke="#FFFF" strokeWidth={15} dataKey="name" />
+        <YAxis ticks={customTicks}  />
+        <Tooltip />
+        <Legend />
+        <Bar  minPointSize={0} shape={<CustomBar />} barSize={100} stroke="#000" dataKey="всего оценок" fill="#ffc658" />
+      </BarChart>
+    </div>
+    )
+  };
+  
 
 const ResultsBlock = () => {
     return (
-        <div className='results-block-container'>
-            <div className='results-block-container-graph'>
-                <MyLineChart/>
-            </div>
-            <span>
-                Спасибо за ответы!
-            </span>
+        <div className='result-block__block'>
+            <MyBarChart/>
+            <h2>Спасибо за ответы!</h2>
         </div>
     )
-}
-
-
-
+} 
 
 export default ResultsBlock;
+
+

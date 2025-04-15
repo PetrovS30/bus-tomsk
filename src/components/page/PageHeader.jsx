@@ -1,5 +1,5 @@
 import './page-header.css';
-import tomsklogo from './tomskoj-1.png';
+import tomsklogo from './logo-svg.svg';
 
 const PageHeader = () => {
     return (

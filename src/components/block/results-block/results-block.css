@@ -1,21 +1,36 @@
-.results-block-container {
-    max-width: 100%;
+.recharts-legend-wrapper {
+    display: none;
+}
+
+.bar-char {
+    background-color: blue;
+}
+
+.result-block__block {
     height: 700px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     background-color: #D9D9D9;
-    color: #000000;
-    font-size: 55px;
-    font-weight: bold;
-    letter-spacing: 0px;
-    margin: 0 auto;
 }
 
-.results-block-container-graph {
-    width: 720px;
-    height: 720px;
-    margin: 0 auto;
-    background-color: #FFFFFF;
+.result-block__block h2 {
+    margin-top: 33px;
+    width: 574px;
+    text-align: center;
+    height: 68px;
+    font-size: 50px;
+    color: #000;
+    letter-spacing: 0;
 }
 
-.results-block-container-graph span {
-    margin: 0 auto;
+@media (max-width: 1210px) {
+    .result-block__block {
+        height: 500px;
+    }
+
+    .result-block__block h2 {
+        margin-top: 19px;
+    }
 }
