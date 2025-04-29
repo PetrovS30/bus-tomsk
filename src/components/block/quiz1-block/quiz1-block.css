@@ -5,78 +5,138 @@
   align-items: center;
   width: 100%;
   height: 900px;
-  background-color: #D9D9D9;
+  background-image: url('./quizblock1-background.jpg');
 }
   
 .quiz1-block__text {
     display: flex;
-    max-width: 1000px;
+    font-style: bold;
+    font-family: Roboto;
+    max-width: 1100px;
     text-align: center;
-    font-size: 50px;
+    font-size: 60px;
     color: black;
-    line-height: 1.2;
-}
-
-.quiz1-block__input {
-  width: 700px;
-  height: 30px;
-  border-radius: 55px;
-  outline: none;
-  -webkit-appearance: none; /* Убираем стандартные стили */
-  background: linear-gradient(to right, red, yellow, green); /* Градиент */
-  margin-bottom: 30px;
-}
-
-/* Стили для бегунка (ползунка) */
-.quiz1-block__input::-webkit-slider-thumb {
-  -webkit-appearance: none;
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  background: white;
-  border: 2px solid #333;
-  cursor: pointer;
-}
-
-.quiz1-block__input::-moz-range-thumb {
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-  background: white;
-  border: 2px solid #333;
-  cursor: pointer;
+    line-height: 70px;
 }
 
 .quiz1-block__value {
-  margin-top: 10px;
-  font-size: 30px;
-  margin-bottom: 100px;
+  margin-top: 40px;
+  font-size: 48px;
   color: #000;
+  font-family: Roboto;
+}
+
+button {
+  position: relative;
+  margin: 0;
+  padding: 17px 35px;
+  outline: none;
+  text-decoration: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  text-transform: uppercase;
+  background-color: #fff;
+  border: 1px solid rgba(22, 76, 167, 0.6);
+  border-radius: 10px;
+  color: #1d89ff;
+  font-weight: 400;
+  font-family: inherit;
+  z-index: 0;
+  overflow: hidden;
+  transition: all 0.3s cubic-bezier(0.02, 0.01, 0.47, 1);
+}
+
+button span {
+  color: #164ca7;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.7px;
+}
+
+button:hover {
+  animation: rotate624 0.7s ease-in-out both;
+}
+
+button:hover span {
+  animation: storm1261 0.7s ease-in-out both;
+  animation-delay: 0.06s;
+}
+
+@keyframes rotate624 {
+  0% {
+    transform: rotate(0deg) translate3d(0, 0, 0);
+  }
+
+  25% {
+    transform: rotate(3deg) translate3d(0, 0, 0);
+  }
+
+  50% {
+    transform: rotate(-3deg) translate3d(0, 0, 0);
+  }
+
+  75% {
+    transform: rotate(1deg) translate3d(0, 0, 0);
+  }
+
+  100% {
+    transform: rotate(0deg) translate3d(0, 0, 0);
+  }
+}
+
+@keyframes storm1261 {
+  0% {
+    transform: translate3d(0, 0, 0) translateZ(0);
+  }
+
+  25% {
+    transform: translate3d(4px, 0, 0) translateZ(0);
+  }
+
+  50% {
+    transform: translate3d(-3px, 0, 0) translateZ(0);
+  }
+
+  75% {
+    transform: translate3d(2px, 0, 0) translateZ(0);
+  }
+
+  100% {
+    transform: translate3d(0, 0, 0) translateZ(0);
+  }
 }
 
 .quiz1-block__btn {
-  border: none;
+  border: 5px solid;
+  overflow: hidden;
+  position: relative;
   width: 330px;
   height: 70px;
-  font-size: 30px;
-  background-color: #F8CE5F;
-  color: #000;
-  border-radius: 50px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  line-height: 1; 
-  padding: 0; 
-
-  
-  transition: all 0.3s ease;
-  transform-origin: center;
 }
 
-.quiz1-block__btn:hover {
-  transform: scale(1.05);
-  background-color: green;
-  color: white;
+.quiz1-block__btn span {
+  z-index: 20;
+}
+
+.quiz1-block__btn:after {
+  background: #38ef7d;
+  content: "";
+  height: 155px;
+  left: -75px;
+  opacity: 0.4;
+  position: absolute;
+  top: -50px;
+  transform: rotate(35deg);
+  transition: all 550ms cubic-bezier(0.19, 1, 0.22, 1);
+  width: 50px;
+  z-index: -10;
+}
+
+.quiz1-block__btn:hover:after {
+  left: 120%;
+  transition: all 550ms cubic-bezier(0.19, 1, 0.22, 1);
 }
 
 @media (max-width: 1755px){
@@ -110,3 +170,435 @@
     height: 40px;
   }
 }
+
+.quiz1-block__toast {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: #323232;
+  color: #fff;
+  padding: 10px 15px;
+  border-radius: 5px;
+  opacity: 0.9;
+  animation: fadeOut 3s ease-out forwards;
+}
+
+@keyframes fadeOut {
+  0% { opacity: 0.9; }
+  80% { opacity: 0.5; }
+  100% { opacity: 0; }
+}
+
+.quiz1-block__center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 200px;
+}
+
+.quiz1-block__final {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+
+
+
+
+.feedback {
+  --normal: #414052;
+  --normal-shadow: #313140;
+  --normal-shadow-top: #4c4b60;
+  --normal-mouth: #2e2e3d;
+  --normal-eye: #282734;
+  --active: #f8da69;
+  --active-shadow: #f4b555;
+  --active-shadow-top: #fff6d3;
+  --active-mouth: #f05136;
+  --active-eye: #313036;
+  --active-tear: #76b5e7;
+  --active-shadow-angry: #e94f1d;
+  --hover: #454456;
+  --hover-shadow-top: #59586b;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  }
+  .feedback label {
+  position: relative;
+  transition: transform 0.3s;
+  cursor: pointer;
+  }
+  .feedback label:not(:last-child) {
+  margin-right: 20px;
+  }
+  .feedback label input {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  outline: none;
+  border: none;
+  display: block;
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  left: 0;
+  top: 0;
+  margin: 0;
+  padding: 0;
+  border-radius: 50%;
+  background: var(--sb, var(--normal));
+  box-shadow:
+      inset 3px -3px 4px var(--sh, var(--normal-shadow)),
+      inset -1px 1px 2px var(--sht, var(--normal-shadow-top));
+  transition:
+      background 0.4s,
+      box-shadow 0.4s,
+      transform 0.3s;
+  -webkit-tap-highlight-color: transparent;
+  }
+  .feedback label div {
+  width: 40px;
+  height: 40px;
+  position: relative;
+  transform: perspective(240px) translateZ(4px);
+  }
+  .feedback label div svg,
+  .feedback label div:before,
+  .feedback label div:after {
+  display: block;
+  position: absolute;
+  left: var(--l, 9px);
+  top: var(--t, 13px);
+  width: var(--w, 8px);
+  height: var(--h, 1px);
+  transform: rotate(var(--r, 0deg)) scale(var(--sc, 1)) translateZ(0);
+  }
+  .feedback label div svg {
+  fill: none;
+  stroke: var(--s);
+  stroke-width: 1.5px;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  transition: stroke 0.4s;
+  }
+  .feedback label div svg.eye {
+  --s: var(--e, var(--normal-eye));
+  --t: 17px;
+  --w: 7px;
+  --h: 4px;
+  }
+  .feedback label div svg.eye.right {
+  --l: 23px;
+  }
+  .feedback label div svg.mouth {
+  --s: var(--m, var(--normal-mouth));
+  --l: 11px;
+  --t: 23px;
+  --w: 18px;
+  --h: 7px;
+  }
+  .feedback label div:before,
+  .feedback label div:after {
+  content: "";
+  z-index: var(--zi, 1);
+  border-radius: var(--br, 1px);
+  background: var(--b, var(--e, var(--normal-eye)));
+  transition: background 0.4s;
+  }
+  .feedback label.angry {
+  --step-1-rx: -24deg;
+  --step-1-ry: 20deg;
+  --step-2-rx: -24deg;
+  --step-2-ry: -20deg;
+  }
+  .feedback label.angry div:before {
+  --r: 20deg;
+  }
+  .feedback label.angry div:after {
+  --l: 23px;
+  --r: -20deg;
+  }
+  .feedback label.angry div svg.eye {
+  stroke-dasharray: 4.55;
+  stroke-dashoffset: 8.15;
+  }
+  .feedback label.angry input:checked {
+  -webkit-animation: angry 1s linear;
+  animation: angry 1s linear;
+  }
+  .feedback label.angry input:checked + div:before {
+  --middle-y: -2px;
+  --middle-r: 22deg;
+  -webkit-animation: toggle 0.8s linear forwards;
+  animation: toggle 0.8s linear forwards;
+  }
+  .feedback label.angry input:checked + div:after {
+  --middle-y: 1px;
+  --middle-r: -18deg;
+  -webkit-animation: toggle 0.8s linear forwards;
+  animation: toggle 0.8s linear forwards;
+  }
+  .feedback label.sad {
+  --step-1-rx: 20deg;
+  --step-1-ry: -12deg;
+  --step-2-rx: -18deg;
+  --step-2-ry: 14deg;
+  }
+  .feedback label.sad div:before,
+  .feedback label.sad div:after {
+  --b: var(--active-tear);
+  --sc: 0;
+  --w: 5px;
+  --h: 5px;
+  --t: 15px;
+  --br: 50%;
+  }
+  .feedback label.sad div:after {
+  --l: 25px;
+  }
+  .feedback label.sad div svg.eye {
+  --t: 16px;
+  }
+  .feedback label.sad div svg.mouth {
+  --t: 24px;
+  stroke-dasharray: 9.5;
+  stroke-dashoffset: 33.25;
+  }
+  .feedback label.sad input:checked + div:before,
+  .feedback label.sad input:checked + div:after {
+  -webkit-animation: tear 0.6s linear forwards;
+  animation: tear 0.6s linear forwards;
+  }
+  .feedback label.ok {
+  --step-1-rx: 4deg;
+  --step-1-ry: -22deg;
+  --step-1-rz: 6deg;
+  --step-2-rx: 4deg;
+  --step-2-ry: 22deg;
+  --step-2-rz: -6deg;
+  }
+  .feedback label.ok div:before {
+  --l: 12px;
+  --t: 17px;
+  --h: 4px;
+  --w: 4px;
+  --br: 50%;
+  box-shadow: 12px 0 0 var(--e, var(--normal-eye));
+  }
+  .feedback label.ok div:after {
+  --l: 13px;
+  --t: 26px;
+  --w: 14px;
+  --h: 2px;
+  --br: 1px;
+  --b: var(--m, var(--normal-mouth));
+  }
+  .feedback label.ok input:checked + div:before {
+  --middle-s-y: 0.35;
+  -webkit-animation: toggle 0.2s linear forwards;
+  animation: toggle 0.2s linear forwards;
+  }
+  .feedback label.ok input:checked + div:after {
+  --middle-s-x: 0.5;
+  -webkit-animation: toggle 0.7s linear forwards;
+  animation: toggle 0.7s linear forwards;
+  }
+  .feedback label.good {
+  --step-1-rx: -14deg;
+  --step-1-rz: 10deg;
+  --step-2-rx: 10deg;
+  --step-2-rz: -8deg;
+  }
+  .feedback label.good div:before {
+  --b: var(--m, var(--normal-mouth));
+  --w: 5px;
+  --h: 5px;
+  --br: 50%;
+  --t: 22px;
+  --zi: 0;
+  opacity: 0.5;
+  box-shadow: 16px 0 0 var(--b);
+  filter: blur(2px);
+  }
+  .feedback label.good div:after {
+  --sc: 0;
+  }
+  .feedback label.good div svg.eye {
+  --t: 15px;
+  --sc: -1;
+  stroke-dasharray: 4.55;
+  stroke-dashoffset: 8.15;
+  }
+  .feedback label.good div svg.mouth {
+  --t: 22px;
+  --sc: -1;
+  stroke-dasharray: 13.3;
+  stroke-dashoffset: 23.75;
+  }
+  .feedback label.good input:checked + div svg.mouth {
+  --middle-y: 1px;
+  --middle-s: -1;
+  -webkit-animation: toggle 0.8s linear forwards;
+  animation: toggle 0.8s linear forwards;
+  }
+  .feedback label.happy div {
+  --step-1-rx: 18deg;
+  --step-1-ry: 24deg;
+  --step-2-rx: 18deg;
+  --step-2-ry: -24deg;
+  }
+  .feedback label.happy div:before {
+  --sc: 0;
+  }
+  .feedback label.happy div:after {
+  --b: var(--m, var(--normal-mouth));
+  --l: 11px;
+  --t: 23px;
+  --w: 18px;
+  --h: 8px;
+  --br: 0 0 8px 8px;
+  }
+  .feedback label.happy div svg.eye {
+  --t: 14px;
+  --sc: -1;
+  }
+  .feedback label.happy input:checked + div:after {
+  --middle-s-x: 0.95;
+  --middle-s-y: 0.75;
+  -webkit-animation: toggle 0.8s linear forwards;
+  animation: toggle 0.8s linear forwards;
+  }
+  .feedback label input:checked {
+  --sb: var(--active);
+  --sh: var(--active-shadow);
+  --sht: var(--active-shadow-top);
+  }
+  .feedback label input:checked + div {
+  --m: var(--active-mouth);
+  --e: var(--active-eye);
+  -webkit-animation: shake 0.8s linear forwards;
+  animation: shake 0.8s linear forwards;
+  }
+  .feedback label input:not(:checked):hover {
+  --sb: var(--hover);
+  --sht: var(--hover-shadow-top);
+  }
+  .feedback label input:not(:checked):active {
+  transform: scale(0.925);
+  }
+  .feedback label input:not(:checked):active + div {
+  transform: scale(0.925);
+  }
+  .feedback label:hover {
+  transform: scale(1.08);
+  }
+  
+  @-webkit-keyframes shake {
+  30% {
+      transform: perspective(240px) rotateX(var(--step-1-rx, 0deg))
+      rotateY(var(--step-1-ry, 0deg)) rotateZ(var(--step-1-rz, 0deg))
+      translateZ(10px);
+  }
+  60% {
+      transform: perspective(240px) rotateX(var(--step-2-rx, 0deg))
+      rotateY(var(--step-2-ry, 0deg)) rotateZ(var(--step-2-rz, 0deg))
+      translateZ(10px);
+  }
+  100% {
+      transform: perspective(240px) translateZ(4px);
+  }
+  }
+  
+  @keyframes shake {
+  30% {
+      transform: perspective(240px) rotateX(var(--step-1-rx, 0deg))
+      rotateY(var(--step-1-ry, 0deg)) rotateZ(var(--step-1-rz, 0deg))
+      translateZ(10px);
+  }
+  60% {
+      transform: perspective(240px) rotateX(var(--step-2-rx, 0deg))
+      rotateY(var(--step-2-ry, 0deg)) rotateZ(var(--step-2-rz, 0deg))
+      translateZ(10px);
+  }
+  100% {
+      transform: perspective(240px) translateZ(4px);
+  }
+  }
+  @-webkit-keyframes tear {
+  0% {
+      opacity: 0;
+      transform: translateY(-2px) scale(0) translateZ(0);
+  }
+  50% {
+      transform: translateY(12px) scale(0.6, 1.2) translateZ(0);
+  }
+  20%,
+  80% {
+      opacity: 1;
+  }
+  100% {
+      opacity: 0;
+      transform: translateY(24px) translateX(4px) rotateZ(-30deg) scale(0.7, 1.1)
+      translateZ(0);
+  }
+  }
+  @keyframes tear {
+  0% {
+      opacity: 0;
+      transform: translateY(-2px) scale(0) translateZ(0);
+  }
+  50% {
+      transform: translateY(12px) scale(0.6, 1.2) translateZ(0);
+  }
+  20%,
+  80% {
+      opacity: 1;
+  }
+  100% {
+      opacity: 0;
+      transform: translateY(24px) translateX(4px) rotateZ(-30deg) scale(0.7, 1.1)
+      translateZ(0);
+  }
+  }
+  @-webkit-keyframes toggle {
+  50% {
+      transform: translateY(var(--middle-y, 0))
+      scale(
+          var(--middle-s-x, var(--middle-s, 1)),
+          var(--middle-s-y, var(--middle-s, 1))
+      )
+      rotate(var(--middle-r, 0deg));
+  }
+  }
+  @keyframes toggle {
+  50% {
+      transform: translateY(var(--middle-y, 0))
+      scale(
+          var(--middle-s-x, var(--middle-s, 1)),
+          var(--middle-s-y, var(--middle-s, 1))
+      )
+      rotate(var(--middle-r, 0deg));
+  }
+  }
+  @-webkit-keyframes angry {
+  40% {
+      background: var(--active);
+  }
+  45% {
+      box-shadow:
+      inset 3px -3px 4px var(--active-shadow),
+      inset 0 8px 10px var(--active-shadow-angry);
+  }
+  }
+  @keyframes angry {
+  40% {
+      background: var(--active);
+  }
+  45% {
+      box-shadow:
+      inset 3px -3px 4px var(--active-shadow),
+      inset 0 8px 10px var(--active-shadow-angry);
+  }
+  }

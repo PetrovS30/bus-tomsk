@@ -1,40 +1,34 @@
 import React, { useEffect, useRef } from "react";
 import './main-block.css';
-import bus1 from './bus1.png';
-import bus2 from './bus2.png';
+import bus from './bus.jpg';
 
 const MainBlock = () => {
-    const bus1Ref = useRef();
-    const bus2Ref = useRef();
+    const busRef = useRef();
 
     useEffect(() => {
-        if (bus1Ref.current && bus2Ref.current) {
-            bus1Ref.current.style.animation = "driveInFromLeft 2s forwards";
-            bus2Ref.current.style.animation = "driveInFromRight 2s forwards";
+        if (busRef.current) {
+            busRef.current.style.animation = "driveInFromRight 2s forwards";
         }
     }, []);
 
     return (
         <div className='main-block__block'>
 
-            <p className='main-block__text'>
-                Дорогие Томичи, помогите улучшить качество общественного транспорта в городе - пройдите небольшой опрос прямо у нас на сайте!
-            </p>
+            <div className="main-block__left-rectangle">
+                <div className="main-block__title">
+                    Пройдите небольшой опрос
+                </div>
+            </div>
 
-            
-            <img
-                ref={bus1Ref}
-                src={bus1}
-                alt="Автобус 1"
-                className="main-block__bus1"
-            />
-            
+            <p className='main-block__text'>
+                Помогите нам улучшить качество общественного транспорта в городе
+            </p>        
             
             <img 
-                ref={bus2Ref}
-                className='main-block__bus2' 
-                src={bus2} 
-                alt="Автобус 2" 
+                ref={busRef}
+                className='main-block__bus' 
+                src={bus} 
+                alt="Автобус" 
             />
             
         </div>
