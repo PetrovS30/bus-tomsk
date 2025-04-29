@@ -15,7 +15,7 @@
 
 a {
   font-weight: 500;
-  color: #646cff;
+  color: inherit;
   text-decoration: inherit;
 }
 
@@ -27,8 +27,6 @@ body {
   margin: 0 auto;
 
 }
-
-
 
 h1,
 h2,
