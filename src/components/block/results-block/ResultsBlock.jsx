@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import './results-block.css';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, Label} from 'recharts';
 
@@ -26,10 +27,13 @@ const data = [
   };
 
   const MyBarChart = () => {
-    
+
+
+
     const customTicks = [0, 50, 100, 150,  200];
     return (
-    <div style={{ backgroundColor: '#fff', margin:" 0 auto",marginTop: "74px", width: "500px", height: "300px"}}>
+    <div style={{ backgroundColor: '#fff', margin:" 0 auto",marginTop: "74px", width: "500px", height: "300px", display: 'flex'}}>
+
         <BarChart barCategoryGap={0} margin={{ top: 20, right: 30, left: 20, bottom: 5 }} width={500} height={300} data={data}  >
         <CartesianGrid strokeDasharray="3 3" fill="" stroke="none" />{/*фон */}
         <XAxis dataKey="name" stroke="#000" strokeWidth={1}>
@@ -41,14 +45,36 @@ const data = [
         <Legend />
         <Bar  minPointSize={0} shape={<CustomBar />} barSize={100} stroke="#000" dataKey="всего оценок" fill="#ffc658" />
       </BarChart>
+
+        <BarChart barCategoryGap={0} margin={{ top: 20, right: 30, left: 20, bottom: 5 }} width={500} height={300} data={data}  >
+        <CartesianGrid strokeDasharray="3 3" fill="" stroke="none" />{/*фон */}
+        <XAxis dataKey="name" stroke="#000" strokeWidth={1}>
+            <Label offset={0} position="insideBottom" />
+        </XAxis>
+        <XAxis stroke="#FFFF" strokeWidth={15} dataKey="name" />
+        <YAxis ticks={customTicks}  />
+        <Tooltip />
+        <Legend />
+        <Bar  minPointSize={0} shape={<CustomBar />} barSize={100} stroke="#000" dataKey="всего оценок" fill="#ffc658" />
+      </BarChart>
+
     </div>
     )
   };
   
 
 const ResultsBlock = () => {
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const handlePrev = () => {
+    setCurrentIndex((prevIndex) => (prevIndex - 1 + 2) % 2);
+  };
+
+  const handleNext = () => {
+    setCurrentIndex((prevIndex) => (prevIndex + 1) % 2);
+  };
     return (
         <div className='result-block__block'>
+                  <button onClick={handlePrev}>prev</button><button onClick={handleNext}>next</button>
             <MyBarChart/>
             <h2>Спасибо за ответы!</h2>
         </div>
