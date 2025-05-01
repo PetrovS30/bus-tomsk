@@ -1,15 +1,27 @@
-import { useState } from 'react';
+import { useState,useEffect } from 'react';
 import './results-block.css';
 import leftIcon from './free-icon-left.svg';
 import rightIcon from './free-icon-right.svg';
 import MyBarChart1 from './MyBarChart1';
 import MyBarChart2 from './MyBarChart2';
 import MyBarChart3 from './MyBarChart3';
-
+import MyBarChart4 from './MyBarChart4';
 
 
 const ResultsBlock = () => {
   const [activeIndex, setActiveIndex] = useState(0);
+  const [isMobileView, setIsMobileView] = useState(window.innerWidth > 768);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobileView(window.innerWidth < 1100);
+    };
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
 
   const charts = [
     <MyBarChart1 key={0}/>,

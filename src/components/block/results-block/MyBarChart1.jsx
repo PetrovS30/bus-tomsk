@@ -28,7 +28,7 @@ const data = [
     const customTicks = [0, 50, 100, 150,  200];
     return (
     <div className='result-block__gistogram'>
-        <BarChart barCategoryGap={0} className='result-block__bar-chart' data={data}  >
+        <BarChart barCategoryGap={0} margin={{ top: 20, right: 30, left: 20, bottom: 5 }} width={500} height={300} data={data}  >
         <CartesianGrid strokeDasharray="3 3" fill="" stroke="none" />{/*фон */}
         <XAxis dataKey="name" stroke="#000" strokeWidth={1}>
             <Label offset={0} position="insideBottom" />
