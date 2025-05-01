@@ -1,11 +1,10 @@
-import { useState,useEffect } from 'react';
+import { useState} from 'react';
 import './results-block.css';
-import leftIcon from './free-icon-left.svg';
-import rightIcon from './free-icon-right.svg';
+import leftIcon from './svg-icon/free-icon-left.svg';
+import rightIcon from './svg-icon/free-icon-right.svg';
 import MyBarChart1 from './MyBarChart1';
 import MyBarChart2 from './MyBarChart2';
 import MyBarChart3 from './MyBarChart3';
-import MyBarChart4 from './MyBarChart4';
 
 
 const ResultsBlock = () => {
