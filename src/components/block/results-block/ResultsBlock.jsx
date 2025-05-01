@@ -54,15 +54,18 @@ const ResultsBlock = () => {
           <p className='result-block__legend'>
             {questions[activeIndex]}
           </p>
-          
           <ul className='result-block__paginations'>
             <li><img src={rightIcon} alt="rightIcon" onClick={handlePrevClick} /></li>
-            <li><button className='result-block__pagination'></button></li>
-            <li><button className='result-block__pagination'></button></li>
-            <li><button className='result-block__pagination'></button></li>
+            {charts.map((_, index) => (
+              <li key={index}>
+                <button
+                  onClick={() => setActiveIndex(index)}
+                  className={`result-block__pagination ${activeIndex === index? 'active' : 'inactive'}`}
+                />
+              </li>
+            ))}
             <li><img src={leftIcon} alt="leftIcon" onClick={handleNextClick}/></li>
-          </ul>
-          
+        </ul>
         </div>
       </div>
     </>

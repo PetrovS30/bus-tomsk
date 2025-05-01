@@ -1,6 +1,7 @@
 import './results-block.css';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, Label} from 'recharts';
 import CustomBar from './customBar/CustomBar';
+
 const data = [
     { name: 1, "всего оценок": 20 },
     { name: 2, "всего оценок": 41 },
