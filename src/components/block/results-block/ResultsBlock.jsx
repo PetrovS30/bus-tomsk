@@ -10,18 +10,6 @@ import MyBarChart4 from './MyBarChart4';
 
 const ResultsBlock = () => {
   const [activeIndex, setActiveIndex] = useState(0);
-  const [isMobileView, setIsMobileView] = useState(window.innerWidth > 768);
-
-  useEffect(() => {
-    const handleResize = () => {
-      setIsMobileView(window.innerWidth < 1100);
-    };
-    window.addEventListener('resize', handleResize);
-
-    return () => {
-      window.removeEventListener('resize', handleResize);
-    };
-  }, []);
 
   const charts = [
     <MyBarChart1 key={0}/>,
