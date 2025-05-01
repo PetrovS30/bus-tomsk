@@ -1,32 +1,132 @@
 .page-header__block {
-    /* margin: 0 auto; */
-    background-color: #F8CE5F;
+    background-image: url('./background-header1920.jpg');
+    background-size: 100% 100%;
     max-width: 100%;
-    height: 141px;
+    height: 130px;
     display: flex;
+    align-items: center;
+    /* justify-content: space-between; */
 }
-
+ 
 .page-header__text {
-
-    width: 1064px;
-    height: 91px;
-    color: #000000;
-    display: block;
-    font-size: 50px;
-    font-weight: bold;
-    margin-left: 47px;
+    max-width: 891px;
+    color: #FFFFFF;
+    font-size: 60px;
+    margin-left: 96px;
 }
 
-.page-header__right-block{
-    justify-content: end;
+.page-header__nav{
+    display: flex;
+    position: absolute;
+    width: 458px;
+    height: 133px;
+    background-color: none;
+    top: 0;
+    right: 0;
+    align-items: center;
+    font-size: 30px;
 }
 
-.page-header__logo {
-    margin-right: auto;
-    margin-left: 182px;
-    margin-top: 18px;
-    width: 115px;
-    height: 105px;
-    letter-spacing: 0;
-    line-height: 0;
+.page-header__block-main {
+    margin-left: 18px;
+}
+
+.page-header__block-developers {
+    margin-left: 75px;
+}
+.page-header__home,
+.page-header__man{
+    display: none;
+}
+
+@media(max-width : 1755px) {
+    .page-header__block {
+        height: 100px;
+    }
+
+    .page-header__text {
+        max-width: 535px;
+        font-size: 40px;
+        margin-left: 65px;
+    }
+
+    .page-header__nav{
+        width: 452px;
+        height: 100px;
+        font-size: 25px;
+    }
+
+    .page-header__block-main {
+        margin-left: 16px;
+    }
+
+    .page-header__block-developers {
+        margin-left: 75px;
+    }
+
+}
+
+@media(max-width : 1230px) {
+    .page-header__block {
+        height: 60px;
+    }
+
+    .page-header__text {
+        font-size: 20px;
+        margin-left: 45px;
+    }
+
+    .page-header__nav{
+        width: 230px;
+        height: 60px;
+        font-size: 15px;
+    }
+
+    .page-header__block-main {
+        margin-left: 11px;
+    }
+
+    .page-header__block-developers {
+        margin-left: 28px;
+    }
+ 
+}
+
+@media(max-width: 600px) {
+    .page-header__block {
+        height: 30px;
+        background-color: #262626;
+        background-image: none;
+    }
+
+    .page-header__text {
+        font-size: 12px;
+        margin-left: 12px;  
+    }
+
+    .page-header__nav{
+        width: 66px;
+        height: 30px;
+        font-size: 15px;
+    }
+
+    .page-header__block-main,
+    .page-header__block-developers{
+        display: none;
+    }
+
+    .page-header__home{
+        display: flex;
+        margin-left: 11px;
+    }
+
+    .page-header__man{
+        display: flex;
+        margin-left: 13px;
+    }
+
+
+
+
+    
 }

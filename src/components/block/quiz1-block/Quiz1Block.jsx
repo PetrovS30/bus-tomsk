@@ -3,7 +3,7 @@ import { useState } from 'react';
 
 // Вопросы
 const questions = [
-  'Оцените ваше удовлетворение качеством общественного транспорта сейчас',
+  'Насколько вам нравятся томские автобусы сейчас?',
   'Оцените удобство расписания движения транспорта',
   'Насколько вы довольны чистотой в транспорте?'
 ];
@@ -76,7 +76,13 @@ const Quiz1Block = () => {
 
   if (submitted) {
     return (
-      <div className="quiz1-block__block">
+      <>
+        <div className="quiz1-block__background">
+          <div className="quiz1-block__grad"></div>
+          <div className="quiz1-block__left-background"></div>
+          <div className="quiz1-block__right-background"></div>
+        </div>
+        <div className="quiz1-block__block">
         {toast && <div className="quiz1-block__toast">{toast}</div>}
         {!loading && (
           <button className="quiz1-block__btn" onClick={handleViewStats}>
@@ -85,11 +91,19 @@ const Quiz1Block = () => {
         )}
         {loading && <span>Сбор статистики...</span>}
       </div>
+      </>
+      
     );
   }
 
   return (
-    <div className='quiz1-block__block'>
+    <>
+      <div className="quiz1-block__background">
+        <div className="quiz1-block__grad"></div>
+        <div className="quiz1-block__left-background"></div>
+        <div className="quiz1-block__right-background"></div>
+      </div>
+      <div className='quiz1-block__block'>
       <p className='quiz1-block__text'>{questions[currentQuestion]}</p>
 
       <div className="feedback">
@@ -193,6 +207,8 @@ const Quiz1Block = () => {
 
       {toast &&<div className="quiz1-block__toast">{toast}</div>}
     </div>
+    </>
+    
   );
 };
 

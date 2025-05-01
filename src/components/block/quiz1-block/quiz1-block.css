@@ -5,14 +5,48 @@
   align-items: center;
   width: 100%;
   height: 900px;
-  background-image: url('./quizblock1-background.jpg');
+  background-color: #fff;
+}
+
+.quiz1-block__background{
+  position: relative;
+}
+
+.quiz1-block__grad{
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 0;
+  height: 170px;
+  width: 100%;
+  background-image: url('./q1background/grad1920.jpg');
+}
+
+.quiz1-block__left-background{
+  position: absolute;
+  top: 0px;
+  left: 0;
+  z-index: 0;
+  height: 900px;
+  width: 500px;
+  background-image: url('./q1background/left1920.png');
+}
+
+.quiz1-block__right-background{
+  position: absolute;
+  top: 0px;
+  right: 0;
+  z-index: 0;
+  height: 900px;
+  width: 577px;
+  background-image: url('./q1background/right1920.png');
 }
   
 .quiz1-block__text {
     display: flex;
     font-style: bold;
     font-family: Roboto;
-    max-width: 1100px;
+    max-width: 920px;
     text-align: center;
     font-size: 60px;
     color: black;
@@ -29,7 +63,6 @@
 button {
   position: relative;
   margin: 0;
-  padding: 17px 35px;
   outline: none;
   text-decoration: none;
   display: flex;
@@ -109,7 +142,6 @@ button:hover span {
 }
 
 .quiz1-block__btn {
-  border: 5px solid;
   overflow: hidden;
   position: relative;
   width: 330px;
@@ -137,38 +169,6 @@ button:hover span {
 .quiz1-block__btn:hover:after {
   left: 120%;
   transition: all 550ms cubic-bezier(0.19, 1, 0.22, 1);
-}
-
-@media (max-width: 1755px){
-  .quiz1-block__block{
-    height: 700px;
-  }
-  .quiz1-block__text{
-    font-size: 40px;
-    width: 900px;
-  }
-}
-
-@media (max-width: 1210px) {
-  .quiz1-block__block{
-    height: 450px;
-  }
-  .quiz1-block__text{
-    font-size: 30px;
-    width: 700px;
-  }
-  .quiz1-block__input{
-    width: 500px;
-  }
-  .quiz1-block__value{
-    font-size: 20px;
-    margin-bottom: 70px;
-  }
-  .quiz1-block__btn {
-    font-size: 20px;
-    width: 170px;
-    height: 40px;
-  }
 }
 
 .quiz1-block__toast {
@@ -202,9 +202,6 @@ button:hover span {
 }
 
 
-
-
-
 .feedback {
   --normal: #414052;
   --normal-shadow: #313140;
@@ -224,381 +221,618 @@ button:hover span {
   padding: 0;
   list-style: none;
   display: flex;
+}
+.feedback label {
+position: relative;
+transition: transform 0.3s;
+cursor: pointer;
+}
+.feedback label:not(:last-child) {
+margin-right: 20px;
+}
+.feedback label input {
+-webkit-appearance: none;
+-moz-appearance: none;
+appearance: none;
+outline: none;
+border: none;
+display: block;
+position: absolute;
+width: 40px;
+height: 40px;
+left: 0;
+top: 0;
+margin: 0;
+padding: 0;
+border-radius: 50%;
+background: var(--sb, var(--normal));
+box-shadow:
+    inset 3px -3px 4px var(--sh, var(--normal-shadow)),
+    inset -1px 1px 2px var(--sht, var(--normal-shadow-top));
+transition:
+    background 0.4s,
+    box-shadow 0.4s,
+    transform 0.3s;
+-webkit-tap-highlight-color: transparent;
+}
+.feedback label div {
+width: 40px;
+height: 40px;
+position: relative;
+transform: perspective(240px) translateZ(4px);
+}
+.feedback label div svg,
+.feedback label div:before,
+.feedback label div:after {
+display: block;
+position: absolute;
+left: var(--l, 9px);
+top: var(--t, 13px);
+width: var(--w, 8px);
+height: var(--h, 1px);
+transform: rotate(var(--r, 0deg)) scale(var(--sc, 1)) translateZ(0);
+}
+.feedback label div svg {
+fill: none;
+stroke: var(--s);
+stroke-width: 1.5px;
+stroke-linecap: round;
+stroke-linejoin: round;
+transition: stroke 0.4s;
+}
+.feedback label div svg.eye {
+--s: var(--e, var(--normal-eye));
+--t: 17px;
+--w: 7px;
+--h: 4px;
+}
+.feedback label div svg.eye.right {
+--l: 23px;
+}
+.feedback label div svg.mouth {
+--s: var(--m, var(--normal-mouth));
+--l: 11px;
+--t: 23px;
+--w: 18px;
+--h: 7px;
+}
+.feedback label div:before,
+.feedback label div:after {
+content: "";
+z-index: var(--zi, 1);
+border-radius: var(--br, 1px);
+background: var(--b, var(--e, var(--normal-eye)));
+transition: background 0.4s;
+}
+.feedback label.angry {
+--step-1-rx: -24deg;
+--step-1-ry: 20deg;
+--step-2-rx: -24deg;
+--step-2-ry: -20deg;
+}
+.feedback label.angry div:before {
+--r: 20deg;
+}
+.feedback label.angry div:after {
+--l: 23px;
+--r: -20deg;
+}
+.feedback label.angry div svg.eye {
+stroke-dasharray: 4.55;
+stroke-dashoffset: 8.15;
+}
+.feedback label.angry input:checked {
+-webkit-animation: angry 1s linear;
+animation: angry 1s linear;
+}
+.feedback label.angry input:checked + div:before {
+--middle-y: -2px;
+--middle-r: 22deg;
+-webkit-animation: toggle 0.8s linear forwards;
+animation: toggle 0.8s linear forwards;
+}
+.feedback label.angry input:checked + div:after {
+--middle-y: 1px;
+--middle-r: -18deg;
+-webkit-animation: toggle 0.8s linear forwards;
+animation: toggle 0.8s linear forwards;
+}
+.feedback label.sad {
+--step-1-rx: 20deg;
+--step-1-ry: -12deg;
+--step-2-rx: -18deg;
+--step-2-ry: 14deg;
+}
+.feedback label.sad div:before,
+.feedback label.sad div:after {
+--b: var(--active-tear);
+--sc: 0;
+--w: 5px;
+--h: 5px;
+--t: 15px;
+--br: 50%;
+}
+.feedback label.sad div:after {
+--l: 25px;
+}
+.feedback label.sad div svg.eye {
+--t: 16px;
+}
+.feedback label.sad div svg.mouth {
+--t: 24px;
+stroke-dasharray: 9.5;
+stroke-dashoffset: 33.25;
+}
+.feedback label.sad input:checked + div:before,
+.feedback label.sad input:checked + div:after {
+-webkit-animation: tear 0.6s linear forwards;
+animation: tear 0.6s linear forwards;
+}
+.feedback label.ok {
+--step-1-rx: 4deg;
+--step-1-ry: -22deg;
+--step-1-rz: 6deg;
+--step-2-rx: 4deg;
+--step-2-ry: 22deg;
+--step-2-rz: -6deg;
+}
+.feedback label.ok div:before {
+--l: 12px;
+--t: 17px;
+--h: 4px;
+--w: 4px;
+--br: 50%;
+box-shadow: 12px 0 0 var(--e, var(--normal-eye));
+}
+.feedback label.ok div:after {
+--l: 13px;
+--t: 26px;
+--w: 14px;
+--h: 2px;
+--br: 1px;
+--b: var(--m, var(--normal-mouth));
+}
+.feedback label.ok input:checked + div:before {
+--middle-s-y: 0.35;
+-webkit-animation: toggle 0.2s linear forwards;
+animation: toggle 0.2s linear forwards;
+}
+.feedback label.ok input:checked + div:after {
+--middle-s-x: 0.5;
+-webkit-animation: toggle 0.7s linear forwards;
+animation: toggle 0.7s linear forwards;
+}
+.feedback label.good {
+--step-1-rx: -14deg;
+--step-1-rz: 10deg;
+--step-2-rx: 10deg;
+--step-2-rz: -8deg;
+}
+.feedback label.good div:before {
+--b: var(--m, var(--normal-mouth));
+--w: 5px;
+--h: 5px;
+--br: 50%;
+--t: 22px;
+--zi: 0;
+opacity: 0.5;
+box-shadow: 16px 0 0 var(--b);
+filter: blur(2px);
+}
+.feedback label.good div:after {
+--sc: 0;
+}
+.feedback label.good div svg.eye {
+--t: 15px;
+--sc: -1;
+stroke-dasharray: 4.55;
+stroke-dashoffset: 8.15;
+}
+.feedback label.good div svg.mouth {
+--t: 22px;
+--sc: -1;
+stroke-dasharray: 13.3;
+stroke-dashoffset: 23.75;
+}
+.feedback label.good input:checked + div svg.mouth {
+--middle-y: 1px;
+--middle-s: -1;
+-webkit-animation: toggle 0.8s linear forwards;
+animation: toggle 0.8s linear forwards;
+}
+.feedback label.happy div {
+--step-1-rx: 18deg;
+--step-1-ry: 24deg;
+--step-2-rx: 18deg;
+--step-2-ry: -24deg;
+}
+.feedback label.happy div:before {
+--sc: 0;
+}
+.feedback label.happy div:after {
+--b: var(--m, var(--normal-mouth));
+--l: 11px;
+--t: 23px;
+--w: 18px;
+--h: 8px;
+--br: 0 0 8px 8px;
+}
+.feedback label.happy div svg.eye {
+--t: 14px;
+--sc: -1;
+}
+.feedback label.happy input:checked + div:after {
+--middle-s-x: 0.95;
+--middle-s-y: 0.75;
+-webkit-animation: toggle 0.8s linear forwards;
+animation: toggle 0.8s linear forwards;
+}
+.feedback label input:checked {
+--sb: var(--active);
+--sh: var(--active-shadow);
+--sht: var(--active-shadow-top);
+}
+.feedback label input:checked + div {
+--m: var(--active-mouth);
+--e: var(--active-eye);
+-webkit-animation: shake 0.8s linear forwards;
+animation: shake 0.8s linear forwards;
+}
+.feedback label input:not(:checked):hover {
+--sb: var(--hover);
+--sht: var(--hover-shadow-top);
+}
+.feedback label input:not(:checked):active {
+transform: scale(0.925);
+}
+.feedback label input:not(:checked):active + div {
+transform: scale(0.925);
+}
+.feedback label:hover {
+transform: scale(1.08);
+}
+
+@-webkit-keyframes shake {
+  30% {
+      transform: perspective(240px) rotateX(var(--step-1-rx, 0deg))
+      rotateY(var(--step-1-ry, 0deg)) rotateZ(var(--step-1-rz, 0deg))
+      translateZ(10px);
   }
+  60% {
+      transform: perspective(240px) rotateX(var(--step-2-rx, 0deg))
+      rotateY(var(--step-2-ry, 0deg)) rotateZ(var(--step-2-rz, 0deg))
+      translateZ(10px);
+  }
+  100% {
+      transform: perspective(240px) translateZ(4px);
+  }
+}
+
+@keyframes shake {
+  30% {
+      transform: perspective(240px) rotateX(var(--step-1-rx, 0deg))
+      rotateY(var(--step-1-ry, 0deg)) rotateZ(var(--step-1-rz, 0deg))
+      translateZ(10px);
+  }
+  60% {
+      transform: perspective(240px) rotateX(var(--step-2-rx, 0deg))
+      rotateY(var(--step-2-ry, 0deg)) rotateZ(var(--step-2-rz, 0deg))
+      translateZ(10px);
+  }
+  100% {
+      transform: perspective(240px) translateZ(4px);
+  }
+}
+@-webkit-keyframes tear {
+  0% {
+      opacity: 0;
+      transform: translateY(-2px) scale(0) translateZ(0);
+  }
+  50% {
+      transform: translateY(12px) scale(0.6, 1.2) translateZ(0);
+  }
+  20%,
+  80% {
+      opacity: 1;
+  }
+  100% {
+      opacity: 0;
+      transform: translateY(24px) translateX(4px) rotateZ(-30deg) scale(0.7, 1.1)
+      translateZ(0);
+  }
+}
+@keyframes tear {
+  0% {
+      opacity: 0;
+      transform: translateY(-2px) scale(0) translateZ(0);
+  }
+  50% {
+      transform: translateY(12px) scale(0.6, 1.2) translateZ(0);
+  }
+  20%,
+  80% {
+      opacity: 1;
+  }
+  100% {
+      opacity: 0;
+      transform: translateY(24px) translateX(4px) rotateZ(-30deg) scale(0.7, 1.1)
+      translateZ(0);
+  }
+}
+@-webkit-keyframes toggle {
+  50% {
+      transform: translateY(var(--middle-y, 0))
+      scale(
+          var(--middle-s-x, var(--middle-s, 1)),
+          var(--middle-s-y, var(--middle-s, 1))
+      )
+      rotate(var(--middle-r, 0deg));
+  }
+}
+@keyframes toggle {
+  50% {
+      transform: translateY(var(--middle-y, 0))
+      scale(
+          var(--middle-s-x, var(--middle-s, 1)),
+          var(--middle-s-y, var(--middle-s, 1))
+      )
+      rotate(var(--middle-r, 0deg));
+  }
+}
+@-webkit-keyframes angry {
+  40% {
+      background: var(--active);
+  }
+  45% {
+      box-shadow:
+      inset 3px -3px 4px var(--active-shadow),
+      inset 0 8px 10px var(--active-shadow-angry);
+  }
+}
+@keyframes angry {
+  40% {
+      background: var(--active);
+  }
+  45% {
+      box-shadow:
+      inset 3px -3px 4px var(--active-shadow),
+      inset 0 8px 10px var(--active-shadow-angry);
+  }
+}
+@media (max-width: 1440px){
+  .quiz1-block__block{
+    height: 675px;
+  }
+  .quiz1-block__text{
+    font-size: 45px;
+    max-width: 700px;
+    line-height: 53px;
+  }
+
+  .quiz1-block__grad{
+    height: 128px;
+    background-image: url('./q1background/grad1440.jpg');
+  }
+
+  .quiz1-block__left-background{ 
+    height: 675px;
+    width: 330px;
+    background-image: url('./q1background/left1440.png');
+  }
+
+  .quiz1-block__right-background{
+    height: 675px;
+    width: 577px;
+    background-image: url('./q1background/right1440.png');
+  }
+
+  .quiz1-block__value {
+    font-size: 36px;
+  }
+}
+
+@media (max-width: 1110px){
+  .quiz1-block__block{
+    height: 360px;
+  }
+  .quiz1-block__text{
+    font-size: 25px;
+    max-width: 362px;
+    line-height: 29px;
+  }
+
+  .quiz1-block__grad{
+    height: 68px;
+    background-image: url('./q1background/grad768.jpg');
+  }
+
+  .quiz1-block__left-background{ 
+    height: 360px;
+    width: 200px; 
+    background-image: url('./q1background/left768.png');
+  }
+
+  .quiz1-block__right-background{
+    height: 360px;
+    width: 307px;
+    background-image: url('./q1background/right768.png');
+  }
+
+  .quiz1-block__value {
+    margin-top: 20px;
+    font-size: 18px;
+  }
+
+  .quiz1-block__btn {
+    width: 200px;
+    height: 40px;
+  }
+  button{
+    border-radius: 6px;
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 768px){
+  .quiz1-block__block{
+    height: 150px; 
+  }
+  .quiz1-block__text{
+    font-size: 12px;
+    max-width: 180px;
+    line-height: 14px;
+  }
+
+  .quiz1-block__grad{
+    height: 28px;
+    background-image: url('./q1background/grad320.jpg');
+  }
+
+  .quiz1-block__left-background{ 
+    height: 150px;
+    width: 80px; 
+    background-image: url('./q1background/left320.png');
+  }
+
+  .quiz1-block__right-background{
+    height: 150px; 
+    width: 95px;
+    background-image: url('./q1background/right320.png');
+  }
+
+  .quiz1-block__value {
+    margin-top: 10px;
+    font-size: 8px;
+  }
+
+  .quiz1-block__btn {
+    width: 70px;
+    height: 20px;
+  }
+  button{
+    border-radius: 3px;
+    font-size: 8px;
+  }
+
+  
+  .feedback {
+    --normal: #414052;
+    --normal-shadow: #313140;
+    --normal-shadow-top: #4c4b60;
+    --normal-mouth: #2e2e3d;
+    --normal-eye: #282734;
+    --active: #f8da69;
+    --active-shadow: #f4b555;
+    --active-shadow-top: #fff6d3;
+    --active-mouth: #f05136;
+    --active-eye: #313036;
+    --active-tear: #76b5e7;
+    --active-shadow-angry: #e94f1d;
+    --hover: #454456;
+    --hover-shadow-top: #59586b;
+        gap: 6px;
+        flex-wrap: nowrap; 
+        justify-content: space-between;
+        padding: 0 10px; 
+        overflow-x: auto; 
+        scrollbar-width: none; 
+  }
+    
+  .feedback::-webkit-scrollbar {
+    display: none;
+  }
+
   .feedback label {
-  position: relative;
-  transition: transform 0.3s;
-  cursor: pointer;
+    transform: scale(0.95);
+    margin: 0 2px !important;
+    flex-shrink: 0; 
   }
-  .feedback label:not(:last-child) {
-  margin-right: 20px;
-  }
+
   .feedback label input {
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  outline: none;
-  border: none;
-  display: block;
-  position: absolute;
-  width: 40px;
-  height: 40px;
-  left: 0;
-  top: 0;
-  margin: 0;
-  padding: 0;
-  border-radius: 50%;
-  background: var(--sb, var(--normal));
-  box-shadow:
-      inset 3px -3px 4px var(--sh, var(--normal-shadow)),
-      inset -1px 1px 2px var(--sht, var(--normal-shadow-top));
-  transition:
-      background 0.4s,
-      box-shadow 0.4s,
-      transform 0.3s;
-  -webkit-tap-highlight-color: transparent;
+    width: 22px;
+    height: 22px;
   }
+
   .feedback label div {
-  width: 40px;
-  height: 40px;
-  position: relative;
-  transform: perspective(240px) translateZ(4px);
+    width: 22px;
+    height: 22px;
   }
-  .feedback label div svg,
-  .feedback label div:before,
-  .feedback label div:after {
-  display: block;
-  position: absolute;
-  left: var(--l, 9px);
-  top: var(--t, 13px);
-  width: var(--w, 8px);
-  height: var(--h, 1px);
-  transform: rotate(var(--r, 0deg)) scale(var(--sc, 1)) translateZ(0);
-  }
-  .feedback label div svg {
-  fill: none;
-  stroke: var(--s);
-  stroke-width: 1.5px;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-  transition: stroke 0.4s;
-  }
+
   .feedback label div svg.eye {
-  --s: var(--e, var(--normal-eye));
-  --t: 17px;
-  --w: 7px;
-  --h: 4px;
+    --t: 9px;
+    --w: 4px;
+    --h: 2px;
   }
+
   .feedback label div svg.eye.right {
-  --l: 23px;
+    --l: 13px;
   }
+
   .feedback label div svg.mouth {
-  --s: var(--m, var(--normal-mouth));
-  --l: 11px;
-  --t: 23px;
-  --w: 18px;
-  --h: 7px;
+    --t: 13px;
+    --w: 10px;
+    --h: 4px;
+    --l: 6px;
   }
-  .feedback label div:before,
-  .feedback label div:after {
-  content: "";
-  z-index: var(--zi, 1);
-  border-radius: var(--br, 1px);
-  background: var(--b, var(--e, var(--normal-eye)));
-  transition: background 0.4s;
-  }
-  .feedback label.angry {
-  --step-1-rx: -24deg;
-  --step-1-ry: 20deg;
-  --step-2-rx: -24deg;
-  --step-2-ry: -20deg;
-  }
+
   .feedback label.angry div:before {
-  --r: 20deg;
+    --l: 5px;
+    --t: 8px;
+    --r: 15deg;
   }
+  
   .feedback label.angry div:after {
-  --l: 23px;
-  --r: -20deg;
+    --l: 13px;
+    --t: 8px;
+    --r: -15deg;
   }
-  .feedback label.angry div svg.eye {
-  stroke-dasharray: 4.55;
-  stroke-dashoffset: 8.15;
-  }
-  .feedback label.angry input:checked {
-  -webkit-animation: angry 1s linear;
-  animation: angry 1s linear;
-  }
-  .feedback label.angry input:checked + div:before {
-  --middle-y: -2px;
-  --middle-r: 22deg;
-  -webkit-animation: toggle 0.8s linear forwards;
-  animation: toggle 0.8s linear forwards;
-  }
-  .feedback label.angry input:checked + div:after {
-  --middle-y: 1px;
-  --middle-r: -18deg;
-  -webkit-animation: toggle 0.8s linear forwards;
-  animation: toggle 0.8s linear forwards;
-  }
-  .feedback label.sad {
-  --step-1-rx: 20deg;
-  --step-1-ry: -12deg;
-  --step-2-rx: -18deg;
-  --step-2-ry: 14deg;
-  }
+
   .feedback label.sad div:before,
   .feedback label.sad div:after {
-  --b: var(--active-tear);
-  --sc: 0;
-  --w: 5px;
-  --h: 5px;
-  --t: 15px;
-  --br: 50%;
+    --w: 3px;
+    --h: 3px;
+    --t: 7px;
   }
+  
+  .feedback label.sad div:before {
+    --l: 6px;
+  }
+  
   .feedback label.sad div:after {
-  --l: 25px;
+    --l: 13px;
   }
-  .feedback label.sad div svg.eye {
-  --t: 16px;
-  }
-  .feedback label.sad div svg.mouth {
-  --t: 24px;
-  stroke-dasharray: 9.5;
-  stroke-dashoffset: 33.25;
-  }
-  .feedback label.sad input:checked + div:before,
-  .feedback label.sad input:checked + div:after {
-  -webkit-animation: tear 0.6s linear forwards;
-  animation: tear 0.6s linear forwards;
-  }
-  .feedback label.ok {
-  --step-1-rx: 4deg;
-  --step-1-ry: -22deg;
-  --step-1-rz: 6deg;
-  --step-2-rx: 4deg;
-  --step-2-ry: 22deg;
-  --step-2-rz: -6deg;
-  }
+
   .feedback label.ok div:before {
-  --l: 12px;
-  --t: 17px;
-  --h: 4px;
-  --w: 4px;
-  --br: 50%;
-  box-shadow: 12px 0 0 var(--e, var(--normal-eye));
+    --l: 7px;
+    --t: 8px;
+    box-shadow: 7px 0 0 var(--e, var(--normal-eye));
   }
+
   .feedback label.ok div:after {
-  --l: 13px;
-  --t: 26px;
-  --w: 14px;
-  --h: 2px;
-  --br: 1px;
-  --b: var(--m, var(--normal-mouth));
+    --l: 7px;
+    --t: 14px;
+    --w: 8px;
   }
-  .feedback label.ok input:checked + div:before {
-  --middle-s-y: 0.35;
-  -webkit-animation: toggle 0.2s linear forwards;
-  animation: toggle 0.2s linear forwards;
-  }
-  .feedback label.ok input:checked + div:after {
-  --middle-s-x: 0.5;
-  -webkit-animation: toggle 0.7s linear forwards;
-  animation: toggle 0.7s linear forwards;
-  }
-  .feedback label.good {
-  --step-1-rx: -14deg;
-  --step-1-rz: 10deg;
-  --step-2-rx: 10deg;
-  --step-2-rz: -8deg;
-  }
+
   .feedback label.good div:before {
-  --b: var(--m, var(--normal-mouth));
-  --w: 5px;
-  --h: 5px;
-  --br: 50%;
-  --t: 22px;
-  --zi: 0;
-  opacity: 0.5;
-  box-shadow: 16px 0 0 var(--b);
-  filter: blur(2px);
+    --t: 12px;
+    --l: 5px;
+    box-shadow: 9px 0 0 var(--b);
   }
-  .feedback label.good div:after {
-  --sc: 0;
-  }
-  .feedback label.good div svg.eye {
-  --t: 15px;
-  --sc: -1;
-  stroke-dasharray: 4.55;
-  stroke-dashoffset: 8.15;
-  }
-  .feedback label.good div svg.mouth {
-  --t: 22px;
-  --sc: -1;
-  stroke-dasharray: 13.3;
-  stroke-dashoffset: 23.75;
-  }
-  .feedback label.good input:checked + div svg.mouth {
-  --middle-y: 1px;
-  --middle-s: -1;
-  -webkit-animation: toggle 0.8s linear forwards;
-  animation: toggle 0.8s linear forwards;
-  }
-  .feedback label.happy div {
-  --step-1-rx: 18deg;
-  --step-1-ry: 24deg;
-  --step-2-rx: 18deg;
-  --step-2-ry: -24deg;
-  }
-  .feedback label.happy div:before {
-  --sc: 0;
-  }
+
   .feedback label.happy div:after {
-  --b: var(--m, var(--normal-mouth));
-  --l: 11px;
-  --t: 23px;
-  --w: 18px;
-  --h: 8px;
-  --br: 0 0 8px 8px;
+    --l: 6px;
+    --t: 12px;
+    --w: 10px;
   }
-  .feedback label.happy div svg.eye {
-  --t: 14px;
-  --sc: -1;
-  }
-  .feedback label.happy input:checked + div:after {
-  --middle-s-x: 0.95;
-  --middle-s-y: 0.75;
-  -webkit-animation: toggle 0.8s linear forwards;
-  animation: toggle 0.8s linear forwards;
-  }
-  .feedback label input:checked {
-  --sb: var(--active);
-  --sh: var(--active-shadow);
-  --sht: var(--active-shadow-top);
-  }
-  .feedback label input:checked + div {
-  --m: var(--active-mouth);
-  --e: var(--active-eye);
-  -webkit-animation: shake 0.8s linear forwards;
-  animation: shake 0.8s linear forwards;
-  }
-  .feedback label input:not(:checked):hover {
-  --sb: var(--hover);
-  --sht: var(--hover-shadow-top);
-  }
-  .feedback label input:not(:checked):active {
-  transform: scale(0.925);
-  }
-  .feedback label input:not(:checked):active + div {
-  transform: scale(0.925);
-  }
-  .feedback label:hover {
-  transform: scale(1.08);
-  }
-  
-  @-webkit-keyframes shake {
-  30% {
-      transform: perspective(240px) rotateX(var(--step-1-rx, 0deg))
-      rotateY(var(--step-1-ry, 0deg)) rotateZ(var(--step-1-rz, 0deg))
-      translateZ(10px);
-  }
-  60% {
-      transform: perspective(240px) rotateX(var(--step-2-rx, 0deg))
-      rotateY(var(--step-2-ry, 0deg)) rotateZ(var(--step-2-rz, 0deg))
-      translateZ(10px);
-  }
-  100% {
-      transform: perspective(240px) translateZ(4px);
-  }
-  }
-  
   @keyframes shake {
-  30% {
-      transform: perspective(240px) rotateX(var(--step-1-rx, 0deg))
-      rotateY(var(--step-1-ry, 0deg)) rotateZ(var(--step-1-rz, 0deg))
-      translateZ(10px);
+    30%, 60% {
+      transform: perspective(120px) translateZ(3px);
+    }
   }
-  60% {
-      transform: perspective(240px) rotateX(var(--step-2-rx, 0deg))
-      rotateY(var(--step-2-ry, 0deg)) rotateZ(var(--step-2-rz, 0deg))
-      translateZ(10px);
+
+  .feedback label:hover {
+    transform: scale(1.03);
   }
-  100% {
-      transform: perspective(240px) translateZ(4px);
-  }
-  }
-  @-webkit-keyframes tear {
-  0% {
-      opacity: 0;
-      transform: translateY(-2px) scale(0) translateZ(0);
-  }
-  50% {
-      transform: translateY(12px) scale(0.6, 1.2) translateZ(0);
-  }
-  20%,
-  80% {
-      opacity: 1;
-  }
-  100% {
-      opacity: 0;
-      transform: translateY(24px) translateX(4px) rotateZ(-30deg) scale(0.7, 1.1)
-      translateZ(0);
-  }
-  }
-  @keyframes tear {
-  0% {
-      opacity: 0;
-      transform: translateY(-2px) scale(0) translateZ(0);
-  }
-  50% {
-      transform: translateY(12px) scale(0.6, 1.2) translateZ(0);
-  }
-  20%,
-  80% {
-      opacity: 1;
-  }
-  100% {
-      opacity: 0;
-      transform: translateY(24px) translateX(4px) rotateZ(-30deg) scale(0.7, 1.1)
-      translateZ(0);
-  }
-  }
-  @-webkit-keyframes toggle {
-  50% {
-      transform: translateY(var(--middle-y, 0))
-      scale(
-          var(--middle-s-x, var(--middle-s, 1)),
-          var(--middle-s-y, var(--middle-s, 1))
-      )
-      rotate(var(--middle-r, 0deg));
-  }
-  }
-  @keyframes toggle {
-  50% {
-      transform: translateY(var(--middle-y, 0))
-      scale(
-          var(--middle-s-x, var(--middle-s, 1)),
-          var(--middle-s-y, var(--middle-s, 1))
-      )
-      rotate(var(--middle-r, 0deg));
-  }
-  }
-  @-webkit-keyframes angry {
-  40% {
-      background: var(--active);
-  }
-  45% {
-      box-shadow:
-      inset 3px -3px 4px var(--active-shadow),
-      inset 0 8px 10px var(--active-shadow-angry);
-  }
-  }
-  @keyframes angry {
-  40% {
-      background: var(--active);
-  }
-  45% {
-      box-shadow:
-      inset 3px -3px 4px var(--active-shadow),
-      inset 0 8px 10px var(--active-shadow-angry);
-  }
-  }
+
+}

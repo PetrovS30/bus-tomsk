@@ -1,0 +1,103 @@
+import './quiz2-block.css';
+import { useRef, useState } from 'react';
+
+const Quiz2Block = () => {
+    const[inputDisplay, setInputDisplay] = useState(false); 
+    let customOptionRef = useRef(null);
+
+    const handleChange = (event) => {
+        if (event.target.id === 'option3') {
+          setInputDisplay(true);
+          setTimeout(() => customOptionRef.current?.focus(), 10);
+        } else {
+          setInputDisplay(false);
+        }
+    };
+
+    return (
+        <>
+            <div className="quiz2-block__background">
+                <div className="quiz2-block__left-background"></div>
+                <div className="quiz2-block__right-background"></div>
+                <div className="quiz2-block__grad"></div>
+            </div>
+
+            <div className="quiz2-block__block">
+                <div className="quiz2-block__options">
+                    <p className="quiz2-block__question">
+                        Как бы вы решили проблемы с общественным транспортом?
+                    </p>
+                     {/* Вариант 1 */}
+                    <div className="quiz2-block__option">
+                      <input
+                        className="quiz2-block__radio-input"
+                        type="radio"
+                        id="option1"
+                        name="transport-options"
+                        onChange={handleChange}
+                      />
+                      <label className="quiz2-block__option-label" htmlFor="option1">
+                        Увеличили количество автобусов на маршруте
+                      </label>
+                    </div>
+
+                  {/* Вариант 2 */}
+                  <div className="quiz2-block__option">
+                    <input
+                      className="quiz2-block__radio-input"
+                      type="radio"
+                      id="option2"
+                      name="transport-options"
+                      onChange={handleChange}
+                    />
+                    <label className="quiz2-block__option-label" htmlFor="option2">
+                      Закупили новые автобусы
+                    </label>
+                  </div>
+
+                  {/* Вариант с текстовым вводом */}
+                    <div className="quiz2-block__option">
+                      <input
+                        className="quiz2-block__radio-input"
+                        type="radio"
+                        id="option3"
+                        name="transport-options"
+                        onChange={handleChange}
+                      />
+                      <label className="quiz2-block__option-label" htmlFor="option3">
+                        Свой вариант:
+
+                        {/* Анимированный карандаш */}
+                        <svg 
+                          className={`quiz2-block__pencil ${inputDisplay ? 'quiz2-block__draw' : ''}`} 
+                          viewBox="0 0 24 24"
+                        >
+                          <path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75 1.84-1.83z"/>
+                          <path d="M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/>
+                        </svg>
+
+                        {/* Input с анимацией */}
+                        <div className={`quiz2-block__input-container ${inputDisplay ? 'quiz2-block__input-visible' : ''}`}>
+                          <input
+                            className="quiz2-block__text-input"
+                            ref={customOptionRef}
+                            type="text"
+                            placeholder=''
+                          />
+                        </div>
+                      </label>
+                    </div>
+                </div>
+
+                <button className="quiz2-block__btn">Ответить</button>
+
+                
+            </div>
+        </>
+        
+    )
+}
+
+export default Quiz2Block;
+
+
