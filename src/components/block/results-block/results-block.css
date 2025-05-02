@@ -80,6 +80,7 @@ ul li {
     display: flex;
     align-items: center;
     border-radius: 0 35px 35px 0;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
 }
 
 .result-block__title {
@@ -139,7 +140,6 @@ ul li {
     background-color: none;
     width: 700px;
     height: 900px;
-    align-items: center;
 }
 
 .result-block__gistogram {
@@ -179,8 +179,15 @@ ul {
     display: flex;
     flex-direction: row;
     align-items: center;
+    justify-content: center;
+    
     gap: 20px;
     margin-left: 0;
+}
+
+li{
+    display: flex;
+    align-items: center;
 }
 
 .result-block__pagination {
@@ -297,6 +304,7 @@ ul {
     .result-block__right {
         width: 350px;
         height: 360px;
+        gap: 8px;
     }
 
     .result-block__btn {
@@ -313,12 +321,13 @@ ul {
 
     .result-block__legend {
         font-size: 14px;
+        margin-top: 10px;
     }
 
     .result-block__gistogram {
         width: 300px;
         height: 250px;
-        margin-top: 20px;
+        margin-top: 0;
     }
 
     .result-block__paginations {
@@ -385,6 +394,7 @@ ul {
     .result-block__right {
         width: 350px;
         height: 150px;
+        gap: 4px;
     }
 
     .result-block__btn {
@@ -401,12 +411,13 @@ ul {
 
     .result-block__legend {
         font-size: 14px;
+        margin-top: 14px;
     }
 
     .result-block__gistogram {
         width: 200px;
         height: 80px;
-        /* margin-top: 20px; */
+        margin-top: 0;
     }
 
     .recharts-wrapper {
@@ -423,18 +434,22 @@ ul {
 
     .result-block__paginations {
         margin-top: 0;
+        height: 10px;
+        
     }
 
     .result-block__pagination {
-        width: 20px;
-        height: 20px;
+        width: 10px;
+        height: 10px;
         font-size: 0;
     }
 
     img {
-        width: 20px;
-        height: 20px;
+        width: 10px;
+        height: 10px;
     }
+
+    
 
     .result-block__btn {
         width: 70px;
@@ -449,13 +464,11 @@ ul {
 
 @media (max-width: 360px) {
     .result-block__gistogram {
-        margin-top: 10px !important;
         width: 150px !important;
         height: 60px !important;
     }
 
     .recharts-wrapper {
-        margin-top: 10px !important;
         width: 150px !important;
         height: 60px !important;
     }

@@ -65,7 +65,7 @@ const ResultsBlock = () => {
               </li>
             ))}
             <li><img src={leftIcon} alt="leftIcon" onClick={handleNextClick}/></li>
-        </ul>
+          </ul>
         </div>
       </div>
     </>
