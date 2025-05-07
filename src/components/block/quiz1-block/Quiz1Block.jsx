@@ -1,5 +1,28 @@
 import './quiz1-block.css';
-import { useState } from 'react';
+import { useState} from 'react';
+
+import { initializeApp } from 'firebase/app';
+import {ref, push, getDatabase} from 'firebase/database';
+
+
+const firebaseConfig = {
+  apiKey: "AIzaSyCWwywrSSV5LSMeGVI0gWGVwYLJo6XKt-A",
+  authDomain: "bus-train-cd2c6.firebaseapp.com",
+  databaseURL: "https://bus-train-cd2c6-default-rtdb.firebaseio.com",
+  projectId: "bus-train-cd2c6",
+  storageBucket: "bus-train-cd2c6.firebasestorage.app",
+  messagingSenderId: "688491898760",
+  appId: "1:688491898760:web:f8bad687505d8cdb4ebc3d",
+  measurementId: "G-9C7NRE1Q2J"
+};
+
+
+const firebaseApp = initializeApp(firebaseConfig);//инициализации приложения Firebase
+const db = getDatabase(firebaseApp);//получения экземпляра базы данных Realtime Database от Firebase
+const userRef1 = ref(db, '/question1');//ссылка на корневой узел
+const userRef2 = ref(db, '/question2');//ссылка на корневой узел
+const userRef3 = ref(db, '/question3');//ссылка на корневой узел
+
 
 // Вопросы
 const questions = [
@@ -31,34 +54,21 @@ const Quiz1Block = () => {
     } else {
       // последний ответ
       const finalAnswers = [...newAnswers];
-      const payload = {
-        answer1: finalAnswers[0],
-        answer2: finalAnswers[1],
-        answer3: finalAnswers[2]
-      };
+        try {
+          await push(userRef1, {answer1: finalAnswers[0]}); 
+          await push(userRef2, {answer2: finalAnswers[1]}); 
+          await push(userRef3, {answer3: finalAnswers[2]}); 
 
-      try {
-        const response = await fetch('http://localhost:5000/', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(payload)
-        });
-
-        if (response.ok) {
-          setToast('Ответы сохранены');
-        } else {
-          throw new Error('Ошибка при отправке');
+        } catch (err) {
+          setToast('Произошла ошибка при отправке ответов', err);
         }
-      } catch (err) {
-        setToast('Произошла ошибка при отправке ответов', err);
+
+        setSubmitted(true);
+        setTimeout(() => setToast(null), 3000);
       }
+    };
 
-      setSubmitted(true);
-      setTimeout(() => setToast(null), 3000);
-    }
-  };
-
-  const handleViewStats = async () => {
+/*   const handleViewStats = async () => {
     setLoading(true);
     try {
       const response = await fetch('http://localhost:5000/stats');
@@ -72,7 +82,7 @@ const Quiz1Block = () => {
     } finally {
       setLoading(false);
     }
-  };
+  }; */
 
   if (submitted) {
     return (
@@ -85,7 +95,7 @@ const Quiz1Block = () => {
         <div className="quiz1-block__block">
         {toast && <div className="quiz1-block__toast">{toast}</div>}
         {!loading && (
-          <button className="quiz1-block__btn" onClick={handleViewStats}>
+          <button className="quiz1-block__btn">
             Просмотреть статистику
           </button>
         )}
