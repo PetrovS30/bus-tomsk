@@ -6,7 +6,6 @@ import MyBarChart1 from './MyBarChart1';
 import MyBarChart2 from './MyBarChart2';
 import MyBarChart3 from './MyBarChart3';
 
-
 const ResultsBlock = () => {
   const [activeIndex, setActiveIndex] = useState(0);
 

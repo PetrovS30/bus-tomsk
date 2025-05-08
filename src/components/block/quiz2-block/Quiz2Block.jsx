@@ -99,5 +99,3 @@ const Quiz2Block = () => {
 }
 
 export default Quiz2Block;
-
-
