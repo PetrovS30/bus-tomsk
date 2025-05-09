@@ -15,7 +15,7 @@ const Quiz2Block = () => {
     };
 
     return (
-        <>
+        <div className='quiz2-block'>
             <div className="quiz2-block__background">
                 <div className="quiz2-block__left-background"></div>
                 <div className="quiz2-block__right-background"></div>
@@ -93,7 +93,7 @@ const Quiz2Block = () => {
 
                 
             </div>
-        </>
+        </div>
         
     )
 }

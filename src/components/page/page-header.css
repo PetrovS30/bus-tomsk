@@ -18,6 +18,7 @@
 .page-header__nav{
     display: flex;
     position: absolute;
+    justify-content: space-between;
     width: 458px;
     height: 133px;
     background-color: none;
@@ -27,13 +28,11 @@
     font-size: 30px;
 }
 
-.page-header__block-main {
-    margin-left: 18px;
+.page-header__link{
+    color: #FFFFFF;
 }
 
-.page-header__block-developers {
-    margin-left: 75px;
-}
+
 .page-header__home,
 .page-header__man{
     display: none;

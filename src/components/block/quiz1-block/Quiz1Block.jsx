@@ -76,7 +76,7 @@ const Quiz1Block = () => {
 
   if (submitted) {
     return (
-      <>
+      <div className='quiz1-block'>
         <div className="quiz1-block__background">
           <div className="quiz1-block__grad"></div>
           <div className="quiz1-block__left-background"></div>
@@ -91,13 +91,13 @@ const Quiz1Block = () => {
         )}
         {loading && <span>Сбор статистики...</span>}
       </div>
-      </>
+      </div>
       
     );
   }
 
   return (
-    <>
+    <div className='quiz1-block'>
       <div className="quiz1-block__background">
         <div className="quiz1-block__grad"></div>
         <div className="quiz1-block__left-background"></div>
@@ -207,7 +207,7 @@ const Quiz1Block = () => {
 
       {toast &&<div className="quiz1-block__toast">{toast}</div>}
     </div>
-    </>
+    </div>
     
   );
 };

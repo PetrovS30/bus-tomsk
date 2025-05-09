@@ -31,7 +31,7 @@ const ResultsBlock = () => {
   };
 
   return (
-    <>
+    <div className='result-block'>
       <div className="result-block__background">
         <div className="result-block__left-background"></div>
         <div className="result-block__right-background"></div>
@@ -68,7 +68,7 @@ const ResultsBlock = () => {
           </ul>
         </div>
       </div>
-    </>
+    </div>
   )
 } 
 
