@@ -55,14 +55,6 @@
         font-size: 25px;
     }
 
-    .page-header__block-main {
-        margin-left: 16px;
-    }
-
-    .page-header__block-developers {
-        margin-left: 75px;
-    }
-
 }
 
 @media(max-width : 1230px) {
@@ -79,14 +71,6 @@
         width: 230px;
         height: 60px;
         font-size: 15px;
-    }
-
-    .page-header__block-main {
-        margin-left: 11px;
-    }
-
-    .page-header__block-developers {
-        margin-left: 28px;
     }
  
 }
@@ -107,23 +91,24 @@
         width: 66px;
         height: 30px;
         font-size: 15px;
+        margin-right: 20px;
+        justify-content: center;
+        gap: 15px;
     }
 
-    .page-header__block-main,
-    .page-header__block-developers{
-        display: none;
-    }
+    
 
     .page-header__home{
         display: flex;
-        margin-left: 11px;
     }
 
     .page-header__man{
         display: flex;
-        margin-left: 13px;
     }
 
+    .page-header__link{
+        display: none;
+    }
 
 
 
