@@ -1,18 +1,46 @@
 import './quiz2-block.css';
 import { useRef, useState } from 'react';
+import { push, ref } from 'firebase/database';
+import { db } from '../../../useDataBase/useDataBase';
+
+const userRef = ref(db, '/quizblock3');
 
 const Quiz2Block = () => {
-    const[inputDisplay, setInputDisplay] = useState(false); 
+    const [inputDisplay, setInputDisplay] = useState(false); 
+    const [answer, setAnswer] = useState('');
+    const [customAnswer, setCustomAnswer] = useState(''); 
+
     let customOptionRef = useRef(null);
 
     const handleChange = (event) => {
         if (event.target.id === 'option3') {
           setInputDisplay(true);
+          setAnswer(event.target);
           setTimeout(() => customOptionRef.current?.focus(), 10);
-        } else {
+        } else if(event.target.id === 'option1') {
+            setAnswer(1);
+            setCustomAnswer(''); 
+        } else if(event.target.id === 'option2') {
+            setAnswer(2);
+            setCustomAnswer(''); 
+        }
+        else {
           setInputDisplay(false);
         }
     };
+
+    const handleCustomInputChange = (e) => {
+        setCustomAnswer(e.target.value);
+        setAnswer(e.target.value); 
+    };
+
+    const handleAnswer = async () => {
+        try {
+            await push(userRef, {'1': answer});
+        } catch(e) {
+            console.log(e);
+        }
+    }
 
     return (
         <>
@@ -83,18 +111,17 @@ const Quiz2Block = () => {
                             ref={customOptionRef}
                             type="text"
                             placeholder=''
+                            value={customAnswer}
+                            onChange={handleCustomInputChange}
                           />
                         </div>
                       </label>
                     </div>
                 </div>
 
-                <button className="quiz2-block__btn">Ответить</button>
-
-                
+                <button onClick={handleAnswer} className="quiz2-block__btn">Ответить</button>
             </div>
         </>
-        
     )
 }
 
