@@ -85,11 +85,8 @@ const Quiz2Block = () => {
             setInputDisplay(false);
         } else {
             try {
-                setLoading(true);
-                await push(userRef, {
-                    answers: [...newAnswers, answerToSave],
-                    timestamp: new Date().toISOString()
-                });
+                 setLoading(true);
+                await push(userRef, {answers: [...newAnswers]});
                 toast.success('Спасибо за ваши ответы!');
                 setSubmitted(true);
             } catch(e) {
@@ -140,7 +137,7 @@ const Quiz2Block = () => {
     const currentQuestion = questions[currentQuestionIndex];
 
     return (
-        <div className='quiz2-block'>
+        <div className='quiz2-block' id='next-section'>
             <div className="quiz2-block__background">
                 <div className="quiz2-block__left-background"></div>
                 <div className="quiz2-block__right-background"></div>

@@ -1,5 +1,5 @@
 import './quiz1-block.css';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { ref, push } from 'firebase/database';
 import { toast } from 'react-toastify';
 import { db } from '../../../useDataBase/useDataBase';
@@ -20,6 +20,20 @@ const Quiz1Block = () => {
   const [currentValue, setCurrentValue] = useState(null);
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
+
+
+  useEffect(() => {
+    if (submitted) {
+      const timer = setTimeout(() => {
+        const element = document.getElementById('next-section');
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' }); 
+        }
+      }, 2000);
+      return () => clearTimeout(timer);
+    }
+  }, [submitted]);
+
 
   const handleSmileyClick = (value) => {
     setCurrentValue(value);
@@ -89,6 +103,7 @@ const Quiz1Block = () => {
       </div>
     );
   }
+
 
   return (
     <div className='quiz1-block'>
@@ -200,7 +215,7 @@ const Quiz1Block = () => {
         </p>
     
         <button className="quiz1-block__btn" onClick={handleNext}>
-          Далее
+          {currentQuestion < questions.length - 1 ? 'Следующий вопрос' : 'Завершить опрос'}
         </button>
       </div>
     </div>
