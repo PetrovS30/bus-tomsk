@@ -2,11 +2,11 @@ ul li {
     cursor: pointer;
 }
 
-.active {
+.active1 {
     background-color: black
 }
 
-.inactive {
+.inactive1 {
     background-color: white;
 }
 

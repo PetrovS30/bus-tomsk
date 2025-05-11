@@ -30,7 +30,7 @@ const ResultsBlock = () => {
   };
 
   return (
-    <>
+    <div className='result-block'>
       <div className="result-block__background">
         <div className="result-block__left-background"></div>
         <div className="result-block__right-background"></div>
@@ -59,7 +59,7 @@ const ResultsBlock = () => {
               <li key={index}>
                 <button
                   onClick={() => setActiveIndex(index)}
-                  className={`result-block__pagination ${activeIndex === index? 'active' : 'inactive'}`}
+                  className={`result-block__pagination ${activeIndex === index? 'active1' : 'inactive1'}`}
                 />
               </li>
             ))}
@@ -67,7 +67,7 @@ const ResultsBlock = () => {
           </ul>
         </div>
       </div>
-    </>
+    </div>
   )
 } 
 
