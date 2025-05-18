@@ -1,5 +1,6 @@
 import './quiz1-block.css';
-import { useState } from 'react';
+import cat1 from './cat1.jpg';
+import { useState, useRef } from 'react';
 import { ref, push } from 'firebase/database';
 import { toast } from 'react-toastify';
 import { db } from '../../../useDataBase/useDataBase';
@@ -15,11 +16,12 @@ const questions = [
 ];
 
 const Quiz1Block = () => {
+  const catRef = useRef();
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [answers, setAnswers] = useState([]);
   const [currentValue, setCurrentValue] = useState(null);
   const [submitted, setSubmitted] = useState(false);
-  const [loading, setLoading] = useState(false);
+
 
   const handleSmileyClick = (value) => {
     setCurrentValue(value);
@@ -53,22 +55,6 @@ const Quiz1Block = () => {
     }
   };
 
-  const handleViewStats = async () => {
-    setLoading(true);
-    try {
-      const response = await fetch('http://localhost:5000/stats');
-      if (response.ok) {
-        toast.success('Статистика успешно собрана и доступна в консоли сервера!');
-      } else {
-        throw new Error('Ошибка при сборе статистики');
-      }
-    } catch (err) {
-      toast.error(`Произошла ошибка: ${err.message}`);
-    } finally {
-      setLoading(false);
-    }
-  };
-
   if (submitted) {
     return (
       <div className='quiz1-block'>
@@ -78,13 +64,12 @@ const Quiz1Block = () => {
           <div className="quiz1-block__right-background"></div>
         </div>
         <div className="quiz1-block__block">
-          <button 
-            className="quiz1-block__btn" 
-            onClick={handleViewStats}
-            disabled={loading}
-          >
-            {loading ? 'Сбор статистики...' : 'Отправить ответы'}
-          </button>
+          <img 
+              ref={catRef}
+              className='' 
+              src={cat1} 
+              alt="cat" 
+          />
         </div>
       </div>
     );

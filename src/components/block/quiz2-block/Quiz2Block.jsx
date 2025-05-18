@@ -1,10 +1,12 @@
 import './quiz2-block.css';
+import cat2 from './cat2.jpg';
 import { useRef, useState } from 'react';
 import { push, ref } from 'firebase/database';
 import { toast } from 'react-toastify';
 import { db } from '../../../useDataBase/useDataBase';
 
 const userRef = ref(db, '/quizblock3');
+
 
 const questions = [
   {
@@ -37,6 +39,7 @@ const questions = [
 ];
 
 const Quiz2Block = () => {
+    const catRef = useRef();
     const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
     const [inputDisplay, setInputDisplay] = useState(false); 
     const [answers, setAnswers] = useState([]);
@@ -101,38 +104,22 @@ const Quiz2Block = () => {
         }
     };
 
-    const handleViewStats = async () => {
-        setLoading(true);
-        try {
-            const response = await fetch('http://localhost:5000/stats');
-            const data = await response.json();
-            console.log('Статистика:', data);
-            toast.success('Ответы получены(см. консоль)');
-        } catch(e) {
-            toast.error('Ошибка при отправке ответов');
-            console.error(e);
-        } finally {
-            setLoading(false);
-        }
-    };
-
     if (submitted) {
         return (
             <div className='quiz2-block'>
-                <div className="quiz2-block__background">
-                    <div className="quiz2-block__left-background"></div>
-                    <div className="quiz2-block__right-background"></div>
-                    <div className="quiz2-block__grad"></div>
-                </div>
-                <div className="quiz2-block__block">
-                    <button 
-                        className="quiz2-block__btn" 
-                        onClick={handleViewStats}
-                        disabled={loading}
-                    >
-                        {loading ? 'Загрузка...' : 'Отправить ответы'}
-                    </button>
-                </div>
+              <div className="quiz2-block__block">
+                  <img 
+                      ref={catRef}
+                      className='' 
+                      src={cat2} 
+                      alt="cat" 
+                  />
+              </div>
+              <div className="quiz2-block__background">
+                  <div className="quiz2-block__left-background"></div>
+                  <div className="quiz2-block__right-background"></div>
+                  <div className="quiz2-block__grad"></div>
+              </div>  
             </div>
         );
     }
